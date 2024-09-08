@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#cool-photo {
+  background-image: url("../../public//Hero\ Pohto.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 400px;
+  position: absolute;
+  width: 100%;
+}
