@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const NavBar = () => {
-  const [login, setLogin] = React.useState(false);
   const Router = useRouter();
   const token = localStorage.getItem("token");
 
@@ -13,12 +12,10 @@ const NavBar = () => {
     localStorage.removeItem("userType");
     localStorage.removeItem("userName");
     localStorage.removeItem("userEmail");
+    localStorage.removeItem("user_id");
     Router.push("/");
-    window.location.reload();
   };
-  const reload = () => {
-    window.location.reload();
-  };
+
   return (
     <section className="flex flex-row items-center justify-around bg-transparent text-white bg-[#5956e9] h-20">
       <div className="flex items-center">

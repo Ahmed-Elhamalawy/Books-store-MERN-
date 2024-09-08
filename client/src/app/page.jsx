@@ -48,7 +48,7 @@ export default function Home() {
                   <Link href="/books">
                     <button className="p-3 w-fit text-white border-2 border-white rounded-xl h-16 text-2xl  hover:bg-white hover:text-black font-semibold">
                       {localStorage.getItem("userType") === "publisher" ? (
-                        <Link href="/">My Books</Link>
+                        <Link href="/publisherBooks">My Books</Link>
                       ) : (
                         <Link href="/books">View All Books</Link>
                       )}

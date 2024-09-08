@@ -21,6 +21,7 @@ export default function PublisherLogin() {
           localStorage.setItem("userType", response.data.data.publisher.type);
           localStorage.setItem("userName", response.data.data.publisher.name);
           localStorage.setItem("userEmail", response.data.data.publisher.email);
+          localStorage.setItem("user_id", response.data.data.publisher._id);
           localStorage.setItem("token", response.data.data.token);
           router.push("/");
         }

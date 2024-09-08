@@ -68,4 +68,20 @@ const getPublishers = async (req, res, next) => {
   }
 };
 
-module.exports = { createPublisher, login, getPublishers };
+const getPublisherBooks = async (req, res, next) => {
+  try {
+    const { publisherId } = req.params;
+    const books = await Publisher.findById(publisherId)
+      .select("books")
+      .populate("books");
+
+    if (!books) {
+      throw new Error("Publisher not found");
+    }
+    res.send(jsend.success(books));
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { createPublisher, login, getPublishers, getPublisherBooks };
