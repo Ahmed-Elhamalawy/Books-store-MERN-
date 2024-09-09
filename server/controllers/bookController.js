@@ -9,7 +9,7 @@ const createBook = async (req, res) => {
       publisherId,
       genre,
       year,
-      copies,
+      price,
       image,
       description,
     } = req.body;
@@ -27,7 +27,7 @@ const createBook = async (req, res) => {
       publisherId: publisher._id, // Assign the publisher's ID to the book
       genre,
       year,
-      copies,
+      price,
       image,
       description,
     });

@@ -46,13 +46,31 @@ export default function Home() {
                     Welcome back, {localStorage.getItem("userName")}
                   </span>
                   <Link href="/books">
-                    <button className="p-3 w-fit text-white border-2 border-white rounded-xl h-16 text-2xl  hover:bg-white hover:text-black font-semibold">
+                    <div>
                       {localStorage.getItem("userType") === "publisher" ? (
-                        <Link href="/publisherBooks">My Books</Link>
+                        <div className="flex gap-5">
+                          <Link
+                            href="/publisherBooks"
+                            className="p-3 w-fit text-white border-2 border-white rounded-xl h-16 text-2xl  hover:bg-white hover:text-black font-semibold"
+                          >
+                            My Books
+                          </Link>
+                          <Link
+                            href="/createBook"
+                            className="p-3 w-fit text-white border-2 border-white rounded-xl h-16 text-2xl  hover:bg-white hover:text-black font-semibold"
+                          >
+                            Publish new Book
+                          </Link>
+                        </div>
                       ) : (
-                        <Link href="/books">View All Books</Link>
+                        <Link
+                          href="/books"
+                          className="p-3 w-fit text-white border-2 border-white rounded-xl h-16 text-2xl  hover:bg-white hover:text-black font-semibold"
+                        >
+                          View All Books
+                        </Link>
                       )}
-                    </button>
+                    </div>
                   </Link>
                 </div>
               ) : (

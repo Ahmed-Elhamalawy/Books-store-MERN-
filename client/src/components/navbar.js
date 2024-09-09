@@ -1,9 +1,22 @@
 "use client";
-import React from "react";
+
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useSelector, useDispatch } from "react-redux";
 
 const NavBar = () => {
+  const carts = useSelector((state) => state.cartSlice.items);
+  const [totalQuantity, setTotalQuantity] = useState(0);
+  useEffect(() => {
+    let total = 0;
+    carts.forEach((item) => {
+      total += item.quantity;
+    });
+    setTotalQuantity(total);
+  }, [carts]);
+
   const Router = useRouter();
   const token = localStorage.getItem("token");
 
@@ -14,10 +27,11 @@ const NavBar = () => {
     localStorage.removeItem("userEmail");
     localStorage.removeItem("user_id");
     Router.push("/");
+    window.location.reload();
   };
 
   return (
-    <section className="flex flex-row items-center justify-around bg-transparent text-white bg-[#5956e9] h-20">
+    <section className="sticky z-50 top-0 flex flex-row items-center justify-around  text-white bg-[#5956e9] h-20">
       <div className="flex items-center">
         <div className="bg-white text-white rounded-full p-2">
           <span className="text-xl font-bold text-black">e</span>
@@ -28,10 +42,27 @@ const NavBar = () => {
       </div>
 
       <div className="flex gap-6">
-        <Link href="/">Home</Link>
-        <Link href="/books">About</Link>
-
-        <Link href="/books">Contact Us</Link>
+        <div></div>
+        <Link href="/" className="text-xl">
+          Home
+        </Link>
+        <Link href="/books" className="text-xl">
+          About
+        </Link>
+        <Link href="/books" className="text-xl">
+          Contact Us
+        </Link>
+        {localStorage.getItem("userType") === "reader" ? (
+          <div className="flex flex-row relative border-2 mx-2 px-3 gap-2 rounded-md">
+            <span className="text-xl">my cart</span>
+            <span className="text-md absolute right-2 top-0 translate-y-[-60%] rounded-full bg-red-500 w-5 h-5 text-center">
+              {totalQuantity}
+            </span>
+            <Link href="/cart">
+              <AiOutlineShoppingCart className=" size-7" />
+            </Link>
+          </div>
+        ) : null}
       </div>
       <main>
         {token ? (

@@ -1,11 +1,13 @@
 import React from "react";
 import Image from "next/image";
 import photo from "../../public/caaaardPhoto.png";
-const Card = ({ title, Author, discription, price }) => {
+import { useSelector, useDispatch } from "react-redux";
+const Card = ({ title, Author, discription, price, addToCart }) => {
   return (
     <>
       <div className="w-60 p-4 h-80 rounded-3xl shadow-lg  flex flex-col items-center justify-between bg-[#dbdeff] hover:scale-105 hover:ease-in-out hover:duration-300">
         {/* Image container */}
+
         <div className=" translate-y-3  rounded-full shadow-lg mb-4  w-3/6 bg-[#5956e9]">
           <Image src={photo} />
         </div>
@@ -16,10 +18,16 @@ const Card = ({ title, Author, discription, price }) => {
           </h3>
           <p className="text-orange-600 font-semibold">{Author || "Author"}</p>
           <p className="text-sm text-gray-500 mt-1">
-            {discription || "Discription"}
+            {discription || "Discription"}...
           </p>
-          <p className="text-orange-600 font-semibold mt-1">
-            {price || "Price"}
+          <p className="text-orange-600 font-semibold mt-1  flex flex-row items-center justify-center gap-5">
+            {price || "Price"}{" "}
+            <div
+              className="cursor-pointer text-xl border-2 w-10 hover:bg-red-500 hover:text-white hover:ease-out duration-300"
+              onClick={addToCart}
+            >
+              +
+            </div>
           </p>
           {/* Button */}
         </div>

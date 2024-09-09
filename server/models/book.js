@@ -11,7 +11,7 @@ const bookSchema = new Schema(
     },
     genre: { type: String, required: true },
     year: { type: Number, required: true },
-    copies: { type: Number, required: true },
+    price: { type: Number, required: true },
     image: { type: String },
     description: { type: String, required: true },
   },

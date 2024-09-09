@@ -20,6 +20,8 @@ export default function ReaderLogin() {
 
       if (response.status === 200) {
         if (response.status === 200) {
+          localStorage.setItem("userType", response.data.data.reader.type);
+
           localStorage.setItem("userName", response.data.data.reader.name);
           localStorage.setItem("userEmail", response.data.data.reader.email);
           localStorage.setItem("token", response.data.data.token);

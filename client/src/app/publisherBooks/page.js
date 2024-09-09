@@ -35,7 +35,7 @@ const BooksByPublisher = () => {
               key={book._id}
               title={book.title}
               Author={book.author}
-              discription={book.discription}
+              discription={book.description.slice(0, 55)}
               price={book.price}
             />
           ))}
